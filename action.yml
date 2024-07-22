@@ -1,0 +1,16 @@
+name: 'Update Android Version Code'
+description: 'Increment the versionCode in the build.gradle file for an Android project'
+inputs:
+  project_name:
+    description: 'The name of the Android project directory containing the build.gradle file'
+    required: true
+    default: 'app'
+runs:
+  using: 'composite'
+  steps:
+    - name: Update version code
+      shell: bash
+      run: ./update_version_code.sh ${{ inputs.project_name }}
+branding:
+  icon: 'android'
+  color: 'green'
