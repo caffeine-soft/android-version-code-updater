@@ -1,4 +1,4 @@
-name: 'Update Android Version Code'
+name: 'Update Android Version Code Automatically'
 description: 'Increment the versionCode in the build.gradle file for an Android project'
 inputs:
   project_name:
