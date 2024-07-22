@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Update version code
-        uses: your-username/your-repo-name@v1
+        uses: caffeine-soft/android-version-code-updater@v1
         with:
           project_name: 'app'
 ```
