@@ -6,7 +6,7 @@ This GitHub Action increments the `versionCode` in the `build.gradle` file for a
 
 ### `project_name`
 
-**Required** The name of the Android project directory containing the `build.gradle` file. Default is `gms`.
+**Required** The name of the Android project directory containing the `build.gradle` file. Default is `app`.
 
 ## Example Usage
 
@@ -29,5 +29,5 @@ jobs:
       - name: Update version code
         uses: your-username/your-repo-name@v1
         with:
-          project_name: 'gms'
+          project_name: 'app'
 ```
