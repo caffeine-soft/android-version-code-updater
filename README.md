@@ -8,6 +8,10 @@ This GitHub Action increments the `versionCode` in the `build.gradle` file for a
 
 **Required** The name of the Android project directory containing the `build.gradle` file. Default is `app`.
 
+### `github_token`
+
+**Required** The GitHub token for authentication.
+
 ## Example Usage
 
 ```yaml
@@ -24,10 +28,11 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Update version code
-        uses: caffeine-soft/android-version-code-updater@v0
+        uses: your-username/android-version-code-updater@v1
         with:
           project_name: 'app'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
