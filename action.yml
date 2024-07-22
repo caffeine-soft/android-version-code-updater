@@ -4,13 +4,16 @@ inputs:
   project_name:
     description: 'The name of the Android project directory containing the build.gradle file'
     required: true
-    default: 'gms'
+    default: 'app'
+  github_token:
+    description: 'GitHub token for authentication'
+    required: true
 runs:
   using: 'composite'
   steps:
     - name: Update version code
       shell: bash
-      run: ./update_version_code.sh ${{ inputs.project_name }} ${{ secrets.GITHUB_TOKEN }}
+      run: ./update_version_code.sh ${{ inputs.project_name }} ${{ secrets.github_token }}
 branding:
   icon: 'arrow-up'
   color: 'green'
