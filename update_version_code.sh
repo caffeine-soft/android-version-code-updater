@@ -2,9 +2,15 @@
 set -e
 
 PROJECT_NAME=$1
+GITHUB_TOKEN=$2
 
 if [ -z "$PROJECT_NAME" ]; then
   echo "Project name is required"
+  exit 1
+fi
+
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "GITHUB_TOKEN is required"
   exit 1
 fi
 
@@ -28,11 +34,12 @@ sed -i "s/versionCode ${OLD_VERSION_CODE}/versionCode ${NEW_VERSION_CODE}/" "$BU
 echo "Updated version code in $BUILD_GRADLE_FILE"
 
 # Commit and push the new version code
-git config --global user.name 'github-actions'
-git config --global user.email 'github-actions@github.com'
 git add "$BUILD_GRADLE_FILE"
 git commit -m "Bump version code to ${NEW_VERSION_CODE}"
-git push
+
+# Use the GITHUB_TOKEN for authentication
+REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+git push "${REPO_URL}"
 
 # Export the new version code as an environment variable
 echo "new_version_code=${NEW_VERSION_CODE}" >> $GITHUB_ENV
